@@ -13,10 +13,11 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
+      models.user.hasMany(models.game)
     }
   };
   user.init({
-    name: {
+    first_name: {
         type: DataTypes.STRING,
       validate: {
         len: {
@@ -25,6 +26,15 @@ module.exports = (sequelize, DataTypes) => {
         }
       }
     },
+    last_name: {
+      type: DataTypes.STRING,
+    validate: {
+      len: {
+        args: [1,99],
+        msg: 'Name must be between 1 and 99 characters'
+      }
+    }
+  },
     email: {
       type: DataTypes.STRING,
       validate: {
