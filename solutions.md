@@ -93,7 +93,7 @@ module.exports = (sequelize, DataTypes) => {
     <header>
       <nav>
         <ul>
-          <% if (!currentUser) {%>
+          <% if (!currentUser) { %>
             <li><a href="/auth/signup">Signup</a></li>
             <li><a href="/auth/login">Login</a></li>
           <% } else { %>

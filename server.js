@@ -43,15 +43,16 @@ app.get('/', (req, res) => {
 // });
 
 app.use('/auth', require('./controllers/auth'));
+app.use('/game', require('./controllers/game'));
 
 app.get('/profile', isLoggedIn, (req, res) => {
-  const { id, name, email } = req.user.get(); 
-  res.render('profile', { id, name, email });
+  const { id, first_name, last_name, email } = req.user.get(); 
+  res.render('profile', { id, first_name, last_name, email });
 });
 
 const PORT = process.env.PORT || 3000;
 const server = app.listen(PORT, () => {
-  console.log(`🎧 You're listening to the smooth sounds of port ${PORT} 🎧`);
+  console.log(`ALL YOUR BASE ARE BELONG TO US.`);
 });
 
 module.exports = server;
