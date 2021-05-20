@@ -10,19 +10,18 @@ router.get('/new', (req, res) => {
 });
 
 router.post('/', async (req, res) => {
-    res.send(req.body)
+    res.send(req.body);
+    try {
+        const foundUser = await db.user.findByPk(req.body.userId)
+        const newGame = await foundUser.createGame(req.body)
+        // flash for creating updating ui
+        res.redirect('/game')
+    } catch (error) {
+        console.log(error)
+        res.redirect('/game/new')
+    }
 })
 
 module.exports = router;
 
-// .post('/', async (req,res)=>{
-//     try {
-//         const foundUser = await db.user.findByPk(req.body.userId)
-//         const newGame = await foundUser.createGame(req.body)
-//         // flash for creating updating ui
-//         res.redirect('/game')
-//     } catch (error) {
-//         console.log(error)
-//         res.redirect('/game/new')
-//     }
-// })
+    
