@@ -21,29 +21,29 @@ router.get('/logout', (req, res) => {
 router.post('/login', passport.authenticate('local', {
   successRedirect: '/',
   failureRedirect: '/auth/login',
-  successFlash: 'Welcome back ...',
+  successFlash: 'Welcome back!',
   failureFlash: 'Either email or password is incorrect. Please try again.'
 }));
 
 router.post('/signup', async (req, res) => {
-  const { name, email, password } = req.body;
+  const { first_name, last_name, email, password } = req.body;
 
 try {
   const [user, created] = await db.user.findOrCreate({
     where: {email},
-    defaults: {name, password}
+    defaults: {first_name, last_name, password}
   });
 
   if (created){
-    console.log(`----- ${user.name} was created -----`);
+    console.log(`----- ${user.first_name} was created -----`);
     const successObject = {
       successRedirect: '/',
-      successFlash: `Welcome ${user.name}. Account was created.`
+      successFlash: `Welcome ${user.first_name} ${user.last_name}! Account was created.`
     }
 
     passport.authenticate('local', successObject)(req,res);
   } else {
-    req.flash('error', 'Email alreadt exists');
+    req.flash('error', 'Email already exists');
     res.redirect('/auth/signup');
   }
 

@@ -48,8 +48,10 @@ router.get('/:idx', async  (req,res)=>{
     res.render('games/details', {game:foundGame})
     })
 
-router.get('game/edit/:idx', async (req, res)=> {
-  res.render('games/edit')
+router.get('/edit/:idx', async (req, res)=> {
+  const targetId = req.params.idx
+  const foundGame= await db.game.findByPk(targetId)
+  res.render('games/edit', {game:foundGame})
 })
 
 router.put('/edit/:idx', async (req, res) => {

@@ -1,8 +1,11 @@
-@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+/* @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap'); */
 
 body {
   background-color: #b2b4b2;
-  font-family: "Press Start 2P", sans-serif;
+  font-family: sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 nav ul li {
@@ -19,11 +22,12 @@ h1, h2 {
   max-width: 500px;
 }
 
-/* ::placeholder {
+input::placeholder {
   color: rgb(231, 231, 231);
+  opacity: 10%;
 }
 
-:placeholder-shown {
+input:placeholder-shown {
   color: rgb(231, 231, 231);
-} */
+}
 
