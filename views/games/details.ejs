@@ -1,0 +1,19 @@
+<h1><%= game.name %></h1>
+
+<p>Release Year: <%= game.first_release_date %></p>
+
+<p>Platforms: <%= game.platforms %></p>
+
+<form method='PUT' action="/game/<%= game.id %>?_method=DELETE">  
+           <input type="hidden" name="name" value='<%= game.name%>'>
+           <input type="submit" value="Edit Details">
+</form>
+
+<form method='DELETE' action="/game/<%= game.id %>?_method=DELETE">
+           <input type="hidden" name="name" value='<%= game.name%>'>
+           <input type="submit" value="Delete Game">
+</form>
+
+<hr />
+
+<a href="/game">&larr; Back to Games </a>

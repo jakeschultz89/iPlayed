@@ -1,0 +1,10 @@
+<h1>Games List</h1>
+<div >
+    <ul>
+        <% allGames.forEach(game => { %>
+         <li>
+            <a href="/game/<%= game.id %>"> <%= game.name %> </a>
+         </li>
+        <% }) %>
+    </ul>
+</div>

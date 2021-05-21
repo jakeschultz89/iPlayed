@@ -6,9 +6,9 @@ const db = require("./models")
 async function addNewUser() {
     try {
         const newUser = await db.user.create({
-            first_name: "John",
-            last_name: "Doe",
-            email: "johndoe@gmail.com",
+            first_name: "Jake",
+            last_name: "Schultz",
+            email: "ejacobschultz@gmail.com",
             password: "password123"
         })
         console.log(newUser);
