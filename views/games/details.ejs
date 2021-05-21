@@ -4,12 +4,11 @@
 
 <p>Platforms: <%= game.platforms %></p>
 
-<form method='PUT' action="/game/<%= game.id %>?_method=DELETE">  
-           <input type="hidden" name="name" value='<%= game.name%>'>
+<form method='GET' action="/game/edit/<%= game.id %>">  
            <input type="submit" value="Edit Details">
 </form>
 
-<form method='DELETE' action="/game/<%= game.id %>?_method=DELETE">
+<form method='POST' action="/game/<%= game.id %>?_method=DELETE">
            <input type="hidden" name="name" value='<%= game.name%>'>
            <input type="submit" value="Delete Game">
 </form>

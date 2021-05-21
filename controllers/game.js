@@ -48,12 +48,31 @@ router.get('/:idx', async  (req,res)=>{
     res.render('games/details', {game:foundGame})
     })
 
+router.get('game/edit/:idx', async (req, res)=> {
+  res.render('games/edit')
+})
+
+router.put('/edit/:idx', async (req, res) => {
+  try {
+    const thisGame = await db.game.findOne({
+      where: {id: req.params.idx}
+    })
+    const updatedGame = await thisGame.update({
+      name: req.body.name,
+      first_release_date: req.body.first_release_date,
+      platforms: req.body.platforms
+    })
+    res.redirect(`/game/${req.params.idx}`)
+  } catch (error) {
+
+  }})
 
 router.delete('/:idx', (req,res) =>{
     db.game.destroy({where: {
          id: req.params.idx
        }})
        .then(deletedGame=>{
+        console.log(deletedGame)
          res.redirect('/game')
        })
      })
