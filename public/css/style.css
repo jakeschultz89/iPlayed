@@ -31,3 +31,6 @@ input:placeholder-shown {
   color: rgb(231, 231, 231);
 }
 
+#button {
+  align-items: center;
+}
