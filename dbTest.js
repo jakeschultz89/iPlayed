@@ -1,7 +1,3 @@
-// axios.get('some url goes here')
-//   .then(function (response) {
-//     console.log(response);
-//   })
 const db = require("./models")
 async function addNewUser() {
     try {
@@ -57,8 +53,6 @@ async function assosciateReview() {
     try {
         const foundGame = await db.game.findByPk(1)
         const foundReview = await db.review.findByPk(1)
-        // console.log(foundGame.get())
-        // console.log(foundReview.get())
         const addedReview = await foundGame.addReview(foundReview)
         console.log(addedReview)
     } catch (error) {

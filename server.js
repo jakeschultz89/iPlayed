@@ -9,7 +9,6 @@ const isLoggedIn = require('./middleware/isLoggedIn');
 const methodOverride = require('method-override');
 
 const SECRET_SESSION = process.env.SECRET_SESSION;
-// console.log(SECRET_SESSION);
 
 app.set('view engine', 'ejs');
 
@@ -27,8 +26,8 @@ app.use(session({
 }));
 app.use(flash()); 
 
-app.use(passport.initialize()); // Initialize passport
-app.use(passport.session()); // Add a session
+app.use(passport.initialize());
+app.use(passport.session()); 
 
 app.use((req, res, next) => {
   console.log(res.locals);
@@ -40,10 +39,6 @@ app.use((req, res, next) => {
 app.get('/', (req, res) => {
   res.render('index');
 });
-
-// app.get('/profile', (req, res) => {
-//   res.render('profile');
-// });
 
 app.use('/auth', require('./controllers/auth'));
 app.use('/game', require('./controllers/game'));

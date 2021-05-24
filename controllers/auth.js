@@ -50,7 +50,6 @@ try {
 } catch (error) {
   console.log('---- Error ----');
   console.log(error);
-  // handle the user in case something goes wrong
   req.flash('error', 'Either email or password is incorrect. Please try again.');
   res.redirect('/auth/signup');
 }

@@ -6,13 +6,7 @@ const {
 } = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
   class user extends Model {
-    /**
-     * Helper method for defining associations.
-     * This method is not a part of Sequelize lifecycle.
-     * The `models/index` file will call this method automatically.
-     */
     static associate(models) {
-      // define association here
       models.user.hasMany(models.game)
       models.user.hasMany(models.review)
     }
@@ -39,7 +33,7 @@ module.exports = (sequelize, DataTypes) => {
     email: {
       type: DataTypes.STRING,
       validate: {
-        isEmail: { //does a boolean check
+        isEmail: { 
           msg: 'Invalid email'
         }
       }
@@ -72,10 +66,10 @@ module.exports = (sequelize, DataTypes) => {
 
   user.prototype.toJSON = function() {
     let userData = this.get();
-    delete userData.password; // it doesn't delete from database, only removes it
+    delete userData.password; 
 
     return userData;
   }
 
-  return user; //add functions above
+  return user; 
 };
