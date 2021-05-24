@@ -4,6 +4,7 @@
 
 <p>Platforms: <%= game.platforms %></p>
 
+<div>
 <form method='GET' action="/game/edit/<%= game.id %>">  
            <input type="submit" id="button" value="Edit Details">
 </form>
@@ -12,6 +13,7 @@
            <input type="hidden" name="name" value='<%= game.name%>'>
            <input type="submit" id="button" value="Delete Game">
 </form>
+</div>
 
 <hr />
 
